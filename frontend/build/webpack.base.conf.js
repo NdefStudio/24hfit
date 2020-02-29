@@ -30,7 +30,7 @@ let webpackConfig = {
   },
   module: {
     rules: [
-      ...(config.dev.useEslint? [{
+      ...(config.dev.useEslint ? [{
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
@@ -78,7 +78,6 @@ let webpackConfig = {
   }
 }
 
-
 module.exports = vuxLoader.merge(webpackConfig, {
   plugins: [
     'vux-ui',
@@ -86,7 +85,7 @@ module.exports = vuxLoader.merge(webpackConfig, {
     {
       name: 'duplicate-style',
       options: {
-        cssProcessorOptions : {
+        cssProcessorOptions: {
           safe: true,
           zindex: false,
           autoprefixer: {
