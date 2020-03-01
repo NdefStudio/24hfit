@@ -15,7 +15,7 @@
     </group>
     <group>
       <cell title="我的时间报告"
-            :link="{path:'/main/report/'+userid}">
+            :link="{path:`/report/${id}`}">
       </cell>
     </group>
   </div>
@@ -30,7 +30,7 @@ export default {
     return {
       username: '约翰史密斯',
       quote: '做时间的主人，过健康的生活',
-      userid: '1241531',
+      id: this.$route.params.id,
       usetime: '24h'
     }
   }

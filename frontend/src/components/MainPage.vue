@@ -36,13 +36,13 @@
       <tabbar style="width:100%;position:fixed;
               left:0;z-index:100;"
               @on-index-change="onTabChange">
-        <tabbar-item :link="{path:'/main/routine'}">
+        <tabbar-item :link="{path:`/main/${id}/routine`}">
           <span slot="label">事务</span>
         </tabbar-item>
-        <tabbar-item :link="{path:'/main/posts'}">
+        <tabbar-item :link="{path:`/main/${id}/posts`}">
           <span slot="label">帖子</span>
         </tabbar-item>
-        <tabbar-item :link="{path:'/main/my'}">
+        <tabbar-item :link="{path:`/main/${id}/my`}">
           <span slot="label">我</span>
         </tabbar-item>
       </tabbar>
@@ -61,7 +61,8 @@ export default {
   },
   data() {
     return {
-      draweropen: false
+      draweropen: false,
+      id: this.$route.params.id
     }
   },
   methods: {

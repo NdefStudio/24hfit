@@ -48,9 +48,10 @@ export default {
       //就在这里发送登录请求
       this.loading = false
       //console.log(this.loading)
+      var id = 13324
       this.auth = true
       if (this.auth) {
-        this.$router.push({ path: '/main' })
+        this.$router.push({ path: '/main/' + id + '/routine' })
       } else {
         this.authword = '验证失败，请检查用户名密码'
       }

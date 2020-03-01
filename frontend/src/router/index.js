@@ -18,7 +18,7 @@ export default new Router({
       component: resolve => (require(['@/components/LoginPage'], resolve))
     },
     {
-      path: '/main',
+      path: '/main/:id',
       name: 'MainPage',
       component: resolve => (require(['@/components/MainPage'], resolve)),
       children: [
@@ -38,6 +38,11 @@ export default new Router({
           component: resolve => (require(['@/components/MyPage'], resolve))
         }
       ]
+    },
+    {
+      path: '/report/:id',
+      name: 'ReportPage',
+      component: resolve => (require(['@/components/ReportPage'], resolve))
     }
   ]
 })
