@@ -15,6 +15,6 @@ export default {
 @import '~vux/src/styles/reset.less';
 
 body {
-  background-color: #fbf9fe;
+  background-color: #e0f0f0;
 }
 </style>
