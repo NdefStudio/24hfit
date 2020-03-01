@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:100%">
     <div class='bigtime'>{{time}}</div>
     <div class="bigbox">
       <flexbox class="routine-column"
@@ -126,12 +126,15 @@ export default {
 .bigtime {
   text-align: center;
   margin: 7%;
+  margin-top: 40px;
   font-size: 50px;
   background-color: #fff;
 }
 .bigbox {
-  margin: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 20px;
+  height: 70%;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }

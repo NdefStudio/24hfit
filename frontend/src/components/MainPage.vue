@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:100%">
     <view-box ref="viewBox"
               :body-padding-top="isShowNav ? '46px' : '0'"
               body-padding-bottom="55px">
@@ -31,7 +31,7 @@
     </tabbar>
     -->
       <keep-alive>
-        <router-view style="margin-top:70px;margin-bottom:100px;"></router-view>
+        <router-view class="routerv"></router-view>
       </keep-alive>
       <tabbar style="width:100%;position:fixed;
               left:0;z-index:100;"
@@ -77,4 +77,10 @@ export default {
 </script>
 
 <style>
+.routerv {
+  top: 20px;
+  bottom: 90px;
+  position: fixed;
+  width: 100%;
+}
 </style>

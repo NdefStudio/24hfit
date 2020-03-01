@@ -1,7 +1,8 @@
 # 24hfit
+
 A web app project, using Vue and Django
 
-## todo list:
+## todo list
 
 frontend:
 

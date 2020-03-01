@@ -15,7 +15,7 @@ export default new Router({
     {
       path: '/login',
       name: 'LoginPage',
-      component: resolve => (require(["@/components/LoginPage"], resolve))
+      component: resolve => (require(['@/components/LoginPage'], resolve))
     },
     {
       path: '/main',
@@ -36,7 +36,7 @@ export default new Router({
           path: 'my',
           name: 'MyPage',
           component: resolve => (require(['@/components/MyPage'], resolve))
-        },
+        }
       ]
     }
   ]
