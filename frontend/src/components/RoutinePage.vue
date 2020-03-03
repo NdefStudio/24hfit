@@ -30,9 +30,9 @@ export default {
     Flexbox,
     FlexboxItem
   },
-  mount() {
+  mounted() {
     /*页面载入时从后台获取现在记录的状态（正在进行的routine*/
-    selected = 'test3'
+    this.selected = '睡眠'
   },
   created() {
     setInterval(this.getTime, 500)
@@ -84,7 +84,7 @@ export default {
           })
         }
       }
-      console.log(chunks)
+      //console.log(chunks)
       return chunks
     }
   },

@@ -1,19 +1,32 @@
 <template>
   <div style="height:100%">
-    <view-box ref="viewBox"
-              :body-padding-top="isShowNav ? '46px' : '0'"
-              body-padding-bottom="55px">
-      <x-header slot="header"
-                style="width:100%;position:fixed;
+    <drawer width="200px;"
+            :show.sync="drawerVisibility"
+            show-mode="overlay"
+            placement="left"
+            :drawer-style="{'background-color':'#35495e', width: '200px'}">
+
+      <!-- drawer content -->
+      <div slot="drawer">
+        <group title='快速操作'>
+          <cell title="添加事务"></cell>
+          <cell title="现在心情"></cell>
+          <cell title="分享"></cell>
+        </group>
+      </div>
+      <view-box ref="viewBox"
+                body-padding-bottom="55px">
+        <x-header slot="header"
+                  style="width:100%;position:fixed;
               left:0;top:0;z-index:100;background-color:#43c9db;">
-        <span>24hFit</span>
-        <x-icon slot="overwrite-left"
-                type="navicon"
-                size="35"
-                style="fill:#fff;position:relative;top:-8px;left:-3px;"
-                @click="onClickDrawer"></x-icon>
-      </x-header>
-      <!--    <tabbar @on-index-change="onIndexChange">
+          <span>24hFit</span>
+          <x-icon slot="overwrite-left"
+                  type="navicon"
+                  size="35"
+                  style="fill:#fff;position:relative;top:-8px;left:-3px;"
+                  @click="onClickDrawer"></x-icon>
+        </x-header>
+        <!--    <tabbar @on-index-change="onIndexChange">
       <tabbar-item>
         <img slot="icon"
              src="../assets/demo/icon_nav_button.png">
@@ -30,44 +43,49 @@
       </tabbar-item>
     </tabbar>
     -->
-      <keep-alive>
-        <router-view class="routerv"></router-view>
-      </keep-alive>
-      <tabbar style="width:100%;position:fixed;
+        <keep-alive>
+          <router-view class="routerv"></router-view>
+        </keep-alive>
+        <tabbar style="width:100%;position:fixed;
               left:0;z-index:100;"
-              @on-index-change="onTabChange">
-        <tabbar-item :link="{path:`/main/${id}/routine`}">
-          <span slot="label">事务</span>
-        </tabbar-item>
-        <tabbar-item :link="{path:`/main/${id}/posts`}">
-          <span slot="label">帖子</span>
-        </tabbar-item>
-        <tabbar-item :link="{path:`/main/${id}/my`}">
-          <span slot="label">我</span>
-        </tabbar-item>
-      </tabbar>
-    </view-box>
+                @on-index-change="onTabChange">
+          <tabbar-item selected
+                       :link="{path:`/main/${id}/routine`}">
+            <span slot="label">事务</span>
+          </tabbar-item>
+          <tabbar-item :link="{path:`/main/${id}/posts`}">
+            <span slot="label">帖子</span>
+          </tabbar-item>
+          <tabbar-item :link="{path:`/main/${id}/my`}">
+            <span slot="label">我</span>
+          </tabbar-item>
+        </tabbar>
+      </view-box>
+    </drawer>
   </div>
 </template>
 
 <script>
-import { XHeader, Tabbar, TabbarItem } from 'vux'
+import { XHeader, Tabbar, TabbarItem, Drawer, Group, Cell } from 'vux'
 
 export default {
   components: {
     XHeader,
     Tabbar,
-    TabbarItem
+    TabbarItem,
+    Drawer,
+    Group,
+    Cell
   },
   data() {
     return {
-      draweropen: false,
+      drawerVisibility: false,
       id: this.$route.params.id
     }
   },
   methods: {
     onClickDrawer() {
-      this.draweropen = !this.draweropen
+      this.drawerVisibility = !this.drawerVisibility
       console.log(this.draweropen)
     },
     onTabChange(oldindex, newindex) {

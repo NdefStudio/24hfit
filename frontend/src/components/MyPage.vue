@@ -10,10 +10,16 @@
           <p class="subtext">{{quote}}</p>
         </div>
       </div>
-      <cell title="使用时间：">{{usetime}}</cell>
+      <cell title="使用时间：">{{usetime+'小时'}}</cell>
+      <cell title="性别：">{{gender=='m'?'男':'女'}}</cell>
+      <cell title="身高：">{{height+'厘米'}}</cell>
+      <cell title="体重：">{{weight+'千克'}}</cell>
+      <cell title="年龄：">{{age+'岁'}}</cell>
 
     </group>
     <group>
+      <cell title="健康状态：">{{healthstatus}}</cell>
+
       <cell title="我的时间报告"
             :link="{path:`/report/${id}`}">
       </cell>
@@ -31,8 +37,24 @@ export default {
       username: '约翰史密斯',
       quote: '做时间的主人，过健康的生活',
       id: this.$route.params.id,
-      usetime: '24h'
+      usetime: '',
+      gender: '',
+      height: '',
+      weight: '',
+      age: '',
+      healthstatus: ''
     }
+  },
+  mounted() {
+    //这里开始发送用户信息请求
+
+    this.usetime = '24h'
+    this.gender = 'male'
+    this.height = '179'
+    this.weight = '62'
+    this.age = '24'
+    this.healthstatus = '优'
+    console.log(this.usetime)
   }
 }
 </script>
