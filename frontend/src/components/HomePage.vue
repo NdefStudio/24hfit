@@ -13,6 +13,13 @@ export default {
     return {
       Title: '24hFit'
     }
+  },
+  mounted() {
+    var that = this
+    setTimeout(function() {
+      console.log('go')
+      that.$router.push({ path: '/login' })
+    }, 2000)
   }
 }
 </script>

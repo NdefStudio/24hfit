@@ -32,11 +32,11 @@ export default {
   },
   mounted() {
     /*页面载入时从后台获取现在记录的状态（正在进行的routine*/
-    console.log(this.global.apiserver)
+    //console.log(this.global.apiserver)
     this.$axios
       .get(this.global.apiserver + 'crt', {
         params: {
-          id: global.id
+          id: this.global.id
         }
       })
       .then(response => {
@@ -51,7 +51,7 @@ export default {
       })
   },
   created() {
-    setInterval(this.getTime, 500)
+    setInterval(this.getTime, 1000)
   },
   methods: {
     getTime: function() {
@@ -82,6 +82,7 @@ export default {
       var data = {}
       data['selected'] = this.selected
       data['time'] = this.time
+      data['id'] = this.global.id
       console.log(data)
       this.$axios
         .post(this.global.apiserver + 'crtp', this.qs.stringify(data))

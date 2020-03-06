@@ -48,19 +48,30 @@ export default {
           ? '0' + new Date().getSeconds()
           : new Date().getSeconds()
       return yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
+    },
+    getPosts: function() {
+      this.$axios
+        .get(this.global.apiserver + 'psts', {
+          params: {
+            id: this.global.id
+          }
+        })
+        .then(response => {
+          console.log(response)
+          this.allposts = response.data.allposts
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
   mounted() {
     //获取所有日志的请求
     //单个日志应至少含有时间和内容
     //这里先造一个
-    for (var i = 1; i < 20; i++) {
-      this.allposts.push({
-        title: '第' + i.toString() + '条',
-        content: this.testzsbd(i),
-        time: this.getTime()
-      })
-    }
+    //造完了，参见APIS.md
+
+    this.getPosts()
   }
 }
 </script>

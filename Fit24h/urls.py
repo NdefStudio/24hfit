@@ -18,6 +18,9 @@ from django.urls import path
 from django.views.generic.base import TemplateView
 from backend.views import getRoutineList
 from backend.views import postRoutineList
+from backend.views import getAllPosts
+from backend.views import newPost
+from backend.views import getUser
 
 
 urlpatterns = [
@@ -25,4 +28,7 @@ urlpatterns = [
     path(r'', TemplateView.as_view(template_name='index.html')),
     path(r'api/crt', getRoutineList),
     path(r'api/crtp', postRoutineList),
+    path(r'api/psts', getAllPosts),
+    path(r'api/npst', newPost),
+    path(r'api/usr', getUser)
 ]

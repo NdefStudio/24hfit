@@ -47,13 +47,27 @@ export default {
   },
   mounted() {
     //这里开始发送用户信息请求
+    this.$axios
+      .get(this.global.apiserver + 'usr', {
+        params: {
+          id: this.global.id
+        }
+      })
+      .then(response => {
+        console.log(response)
+        this.username = response.data.username
+        this.quote = response.data.quote
+        this.usetime = response.data.usetime
+        this.gender = response.data.gender
+        this.height = response.data.height
+        this.weight = response.data.weight
+        this.age = response.data.age
+        this.healthstatus = response.data.healthstatus
+      })
+      .catch(error => {
+        console.log(error)
+      })
 
-    this.usetime = '24h'
-    this.gender = 'male'
-    this.height = '179'
-    this.weight = '62'
-    this.age = '24'
-    this.healthstatus = '优'
     console.log(this.usetime)
   }
 }
