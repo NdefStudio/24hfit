@@ -4,6 +4,13 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import router from './router'
 import App from './App'
+import global from './utils/glbval'
+import axios from 'axios'
+import qs from 'qs'
+
+Vue.prototype.global = global
+Vue.prototype.$axios = axios
+Vue.prototype.qs = qs
 
 FastClick.attach(document.body)
 

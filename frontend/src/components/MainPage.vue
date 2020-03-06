@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { XHeader, Tabbar, TabbarItem, Drawer, Group, Cell } from 'vux'
+import { XHeader, Tabbar, TabbarItem, Drawer, Group, Cell, ViewBox } from 'vux'
 
 export default {
   components: {
@@ -75,7 +75,8 @@ export default {
     TabbarItem,
     Drawer,
     Group,
-    Cell
+    Cell,
+    ViewBox
   },
   data() {
     return {

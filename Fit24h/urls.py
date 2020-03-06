@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic.base import TemplateView
+from backend.views import getRoutineList
+from backend.views import postRoutineList
 
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path(r'', TemplateView.as_view(template_name='index.html'))
+    path(r'', TemplateView.as_view(template_name='index.html')),
+    path(r'api/crt', getRoutineList),
+    path(r'api/crtp', postRoutineList),
 ]

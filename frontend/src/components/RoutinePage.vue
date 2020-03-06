@@ -32,7 +32,23 @@ export default {
   },
   mounted() {
     /*页面载入时从后台获取现在记录的状态（正在进行的routine*/
-    this.selected = '睡眠'
+    console.log(this.global.apiserver)
+    this.$axios
+      .get(this.global.apiserver + 'crt', {
+        params: {
+          id: global.id
+        }
+      })
+      .then(response => {
+        console.log(response)
+        this.routinelist = this.split(response.data.routinelist)
+        this.selected = response.data.selected
+      })
+      .catch(error => {
+        console.log(error)
+        this.selected = ''
+        this.routinelist = ''
+      })
   },
   created() {
     setInterval(this.getTime, 500)
@@ -62,8 +78,16 @@ export default {
       新的routine名称
       这个操作的时间
       */
-
       this.selected = routine.name
+      var data = {}
+      data['selected'] = this.selected
+      data['time'] = this.time
+      console.log(data)
+      this.$axios
+        .post(this.global.apiserver + 'crtp', this.qs.stringify(data))
+        .then(res => {
+          console.log('res=>', res)
+        })
       //在这里发送请求
     },
     split(array) {
@@ -92,31 +116,7 @@ export default {
     return {
       time: '',
       selected: '',
-      routinelist: this.split([
-        { name: '睡眠', icon: 'bla1' },
-        { name: '学习', icon: 'bla1' },
-        { name: '工作', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '走路', icon: 'bla1' },
-        { name: '自由思考', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '跑步', icon: 'bla1' },
-        { name: '跳绳', icon: 'bla1' },
-        { name: '走路', icon: 'bla1' },
-        { name: '自由思考', icon: 'bla1' }
-      ])
+      routinelist: ''
     }
   }
 }
