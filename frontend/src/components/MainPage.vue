@@ -4,7 +4,7 @@
             :show.sync="drawerVisibility"
             show-mode="overlay"
             placement="left"
-            :drawer-style="{'background-color':'#35495e', width: '200px'}">
+            :drawer-style="{'background-color':'#35495e', width: '150px'}">
 
       <!-- drawer content -->
       <div slot="drawer">
@@ -99,7 +99,10 @@ export default {
 .routerv {
   top: 20px;
   bottom: 90px;
+  height: 90%;
   position: fixed;
   width: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 </style>

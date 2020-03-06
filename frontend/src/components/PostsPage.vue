@@ -74,8 +74,6 @@ export default {
   background-color: #ffffff81;
 }
 .scrollbox {
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
   word-wrap: break-word;
   height: 100%;
   margin-top: 25px;
