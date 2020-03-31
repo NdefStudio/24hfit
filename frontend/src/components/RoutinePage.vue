@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='bigtime'>{{time}}</div>
+    <div class="bigtime">{{time}}</div>
     <div class="bigbox">
       <flexbox class="routine-column"
                :gutter="0"
@@ -13,7 +13,7 @@
           <div :class="routine.name==selected?'selected-routine-box':'routine-box'">
             <span v-html="routine.icon"
                   :style="{color: routine.color}"></span>
-            <br>
+            <br />
             <span :style="{fontSize: routine.name.length > 12 ? '12px' : ''}">{{routine.name}}</span>
           </div>
         </flexbox-item>
@@ -31,8 +31,8 @@ export default {
     FlexboxItem
   },
   mounted() {
-    /*页面载入时从后台获取现在记录的状态（正在进行的routine*/
-    //console.log(this.global.apiserver)
+    /* 页面载入时从后台获取现在记录的状态（正在进行的routine */
+    // console.log(this.global.apiserver)
     this.$axios
       .get(this.global.apiserver + 'crt', {
         params: {
@@ -89,7 +89,7 @@ export default {
         .then(res => {
           console.log('res=>', res)
         })
-      //在这里发送请求
+      // 在这里发送请求
     },
     split(array) {
       let chunks = []
@@ -109,7 +109,7 @@ export default {
           })
         }
       }
-      //console.log(chunks)
+      // console.log(chunks)
       return chunks
     }
   },

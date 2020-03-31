@@ -1,8 +1,8 @@
 <template>
-  <div class='page'>
-    <router-link to='login'
-                 tag='p'
-                 class='center_block'>{{Title}}</router-link>
+  <div class="page">
+    <router-link to="login"
+                 tag="p"
+                 class="center_block">{{Title}}</router-link>
   </div>
 </template>
 

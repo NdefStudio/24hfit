@@ -2,9 +2,9 @@
   <div>
     <group>
       <div class="userpanel">
-        <img class='avator'
+        <img class="avator"
              src="../assets/avator.png"
-             alt="用户头像">
+             alt="用户头像" />
         <div style="flex-direction:colomn">
           <p class="maintext">{{username}}</p>
           <p class="subtext">{{quote}}</p>
@@ -15,14 +15,11 @@
       <cell title="身高：">{{height+'厘米'}}</cell>
       <cell title="体重：">{{weight+'千克'}}</cell>
       <cell title="年龄：">{{age+'岁'}}</cell>
-
     </group>
     <group>
       <cell title="健康状态：">{{healthstatus}}</cell>
-
       <cell title="我的时间报告"
-            :link="{path:`/report/${id}`}">
-      </cell>
+            :link="{path:`/report/${id}`}"></cell>
     </group>
   </div>
 </template>
@@ -46,7 +43,7 @@ export default {
     }
   },
   mounted() {
-    //这里开始发送用户信息请求
+    // 这里开始发送用户信息请求
     this.$axios
       .get(this.global.apiserver + 'usr', {
         params: {

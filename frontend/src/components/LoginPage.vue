@@ -9,12 +9,12 @@
         <flexbox-item></flexbox-item>
         <flexbox-item>
           <x-button type="primary"
-                    :show-loading='loading'
-                    @click.native='onLogin'>登录</x-button>
+                    :show-loading="loading"
+                    @click.native="onLogin">登录</x-button>
         </flexbox-item>
         <flexbox-item></flexbox-item>
       </flexbox>
-      <cell :value='authword'></cell>
+      <cell :value="authword"></cell>
     </group>
   </div>
 </template>
@@ -41,13 +41,13 @@ export default {
   },
   methods: {
     onLogin: function() {
-      //console.log(this.username)
-      //console.log(this.password)
+      // console.log(this.username)
+      // console.log(this.password)
       this.loading = true
-      //console.log(this.loading)
-      //就在这里发送登录请求
+      // console.log(this.loading)
+      // 就在这里发送登录请求
       this.loading = false
-      //console.log(this.loading)
+      // console.log(this.loading)
       var id = 13324
       this.auth = true
       if (this.auth) {

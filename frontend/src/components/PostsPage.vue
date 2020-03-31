@@ -1,12 +1,11 @@
 <template>
   <div>
-
     <view-box ref="viewBox"
               :body-padding-top="isShowNav ? '46px' : '0'"
               body-padding-bottom="55px">
       <timeline class="scrollbox">
         <timeline-item v-for="(item,index) in allposts "
-                       :key=index>
+                       :key="index">
           <div class="postitem">
             <h3>{{item.title}}</h3>
             <p class="timetext">{{item.time}}</p>
@@ -66,10 +65,10 @@ export default {
     }
   },
   mounted() {
-    //获取所有日志的请求
-    //单个日志应至少含有时间和内容
-    //这里先造一个
-    //造完了，参见APIS.md
+    // 获取所有日志的请求
+    // 单个日志应至少含有时间和内容
+    // 这里先造一个
+    // 造完了，参见APIS.md
 
     this.getPosts()
   }

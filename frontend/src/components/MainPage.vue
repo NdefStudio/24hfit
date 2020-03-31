@@ -5,10 +5,9 @@
             show-mode="overlay"
             placement="left"
             :drawer-style="{'background-color':'#35495e', width: '150px'}">
-
       <!-- drawer content -->
       <div slot="drawer">
-        <group title='快速操作'>
+        <group title="快速操作">
           <cell title="添加事务"></cell>
           <cell title="现在心情"></cell>
           <cell title="分享"></cell>
@@ -42,7 +41,7 @@
         <span slot="label">two</span>
       </tabbar-item>
     </tabbar>
-    -->
+        -->
         <keep-alive>
           <router-view class="routerv"></router-view>
         </keep-alive>
