@@ -7,7 +7,7 @@
 
 ## /crt
 
-CurrentRouTine:get,获取当前routinelist  
+CurrentRouTime:get,获取当前routinelist  
 接收用户id，发送data包含：
 
 - routinelist：字典数组  
@@ -33,7 +33,7 @@ PoSTs:
 接收用户id，发送内容包含
 
 - allposts:字典数组  
-  e.g.[{title: '第一条',
+  e.g.[{~~title: '第一条'~~,
         content: 'zsbdzsbd',
         time: 'yyyy-mm-dd hh:mf:ss'},{...}]
 
