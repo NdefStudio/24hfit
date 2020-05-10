@@ -11,9 +11,6 @@
                       :key="routine"
                       @click.native="onClickRoutine(routine)">
           <div :class="routine.name==selected?'selected-routine-box':'routine-box'">
-            <span v-html="routine.icon"
-                  :style="{color: routine.color}"></span>
-            <br />
             <span :style="{fontSize: routine.name.length > 12 ? '12px' : ''}">{{routine.name}}</span>
           </div>
         </flexbox-item>
@@ -78,17 +75,19 @@ export default {
       新的routine名称
       这个操作的时间
       */
-      this.selected = routine.name
-      var data = {}
-      data['selected'] = this.selected
-      data['time'] = this.time
-      data['id'] = this.global.id
-      console.log(data)
-      this.$axios
-        .post(this.global.apiserver + 'crtp', this.qs.stringify(data))
-        .then(res => {
-          console.log('res=>', res)
-        })
+      if (routine.name !== '----') {
+        this.selected = routine.name
+        var data = {}
+        data['selected'] = this.selected
+        data['time'] = this.time
+        data['id'] = this.global.id
+        console.log(data)
+        this.$axios
+          .post(this.global.apiserver + 'crtp', this.qs.stringify(data))
+          .then(res => {
+            console.log('res=>', res)
+          })
+      }
       // 在这里发送请求
     },
     split(array) {
@@ -104,8 +103,7 @@ export default {
       if (lastLength < 3) {
         for (let i = 0; i < 3 - lastLength; i++) {
           lastList.push({
-            name: '----',
-            icon: ''
+            name: '----'
           })
         }
       }

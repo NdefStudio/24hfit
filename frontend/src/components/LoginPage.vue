@@ -48,7 +48,7 @@ export default {
       // 就在这里发送登录请求
       this.loading = false
       // console.log(this.loading)
-      var id = 13324
+      var id = 1
       this.auth = true
       if (this.auth) {
         this.$router.push({ path: '/main/' + id + '/routine' })

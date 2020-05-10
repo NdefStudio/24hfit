@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
+from backend.models import *
 
 
 # Create your views here.
@@ -9,31 +10,13 @@ def getRoutineList(request):
     response = {}
     try:
         # 此处从数据库中获取routinelist信息和selected信息
-        routinelist = [
-            {'name': '睡眠', 'icon': 'bla1'},
-            {'name': '学习', 'icon': 'bla1'},
-            {'name': '工作', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '走路', 'icon': 'bla1'},
-            {'name': '自由思考', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
-            {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '走路', 'icon': 'bla1'},
-            {'name': '自由思考', 'icon': 'bla1'}
-        ]
+        user = UserInfo.objects.get(userid=id)
+        # print(user)
+        routinelist = []
+        rt = user.routine_set.all().values("routine")
+        for r in rt:
+            routinelist.append({"name": r["routine"]})
+        print(routinelist)
         selected = '睡眠'
         response['routinelist'] = routinelist
         response['selected'] = selected
