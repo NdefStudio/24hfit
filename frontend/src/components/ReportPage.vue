@@ -1,5 +1,6 @@
 <template>
-  <div style="height:100%">
+  <div style="height:100%;overflow:scroll;
+  -webkit-overflow-scrolling: touch;">
     <x-header slot="header"
               style="width:100%;position:fixed;
               left:0;top:0;z-index:100;background-color:#43c9db;">
@@ -161,10 +162,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.panel {
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-}
-</style>

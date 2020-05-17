@@ -10,7 +10,7 @@ def getRoutineList(request):
     response = {}
     try:
         # 此处从数据库中获取routinelist信息和selected信息
-        user = UserInfo.objects.get(userid=id)
+        user = UserInfo.objects.get(pk=id)
         # print(user)
         routinelist = []
         rt = user.routine_set.all().values("routine")
@@ -36,6 +36,15 @@ def postRoutineList(request):
     print(time)
     try:
         # 存入数据库
+        crt = Routine.objects.filter(routine=select).first()
+        usr = UserInfo.objects.filter(pk=id).first()
+        sttime = usr.crtroutine_starttime
+        rt = usr.crtroutine
+        RoutineRecord.objects.create(
+            routine=rt, endtime=time, manualend=True, starttime=sttime)
+        # 更新userinfo
+        UserInfo.objects.filter(pk=id).update(
+            crtroutine=crt, crtroutine_starttime=time)
         response = HttpResponse('completed')
         response["Access-Control-Allow-Origin"] = "*"
         return response
@@ -48,13 +57,15 @@ def getAllPosts(request):
     response = {}
     try:
         # 从数据库里面读取
-        allposts = [{
-            'title': '第一条',
-            'content': 'zsbdzsbd',
-            'time': 'yyyy-mm-dd hh:mf:ss'
-        }, {'title': '第一条',
-            'content': 'zsbdzsbd',
-            'time': 'yyyy-mm-dd hh:mf:ss'}]
+        usr = UserInfo.objects.filter(pk=id).first()
+        pst = PostInfo.objects.filter(user=usr)
+        allposts = []
+        for p in pst:
+            allposts.append({
+                'title': p.title,
+                'content': p.content,
+                'time': p.time
+            })
         response['allposts'] = allposts
         response = JsonResponse(response)
         response["Access-Control-Allow-Origin"] = "*"
@@ -70,6 +81,9 @@ def newPost(request):
     print(post)
     try:
         # 存入数据库
+        usr = UserInfo.objects.filter(pk=id).first()
+        PostInfo.objects.create(
+            user=usr, title=post['title'], content=post['content'], time=post['time'])
         response = HttpResponse('completed')
         response["Access-Control-Allow-Origin"] = "*"
         return response
@@ -82,13 +96,14 @@ def getUser(request):
     response = {}
     try:
         # 从数据库中读取
-        response['username'] = '约翰史密斯'
-        response['quote'] = '做时间的主人，过健康的生活'
-        response['usetime'] = '24'
-        response['gender'] = 'female'
-        response['height'] = '166'
-        response['weight'] = '52'
-        response['age'] = '24'
+        usr = UserInfo.objects.filter(pk=id).first()
+        response['username'] = usr.username
+        response['quote'] = usr.quote
+        # response['usetime'] = '24'
+        response['gender'] = usr.gender
+        response['height'] = usr.height
+        response['weight'] = usr.weight
+        response['age'] = usr.age
         # 经过一番判断
         response['healthstatus'] = '优'
         response = JsonResponse(response)
