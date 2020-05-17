@@ -12,14 +12,10 @@ class UserInfo(models.Model):
     weight = models.IntegerField()
     quote = models.CharField(max_length=32)
     userid = models.IntegerField(primary_key=True, auto_created=True)
-    inittime = models.DateTimeField()
-
-
-class CurrentRoutine(models.Model):
-    id = models.IntegerField(primary_key=True, auto_created=True)
-    user = models.ForeignKey(to='UserInfo', on_delete=models.CASCADE)
-    croutine = models.ForeignKey(to='Routine', on_delete=models.CASCADE)
-    croutine_starttime = models.DateTimeField()
+    #inittime = models.DateTimeField()
+    croutine = models.ForeignKey(
+        to='Routine', on_delete=models.CASCADE, null=True)
+    croutine_starttime = models.DateTimeField(null=True)
 
 
 class PostInfo(models.Model):
@@ -39,7 +35,7 @@ class KeyWord(models.Model):
 class Routine(models.Model):
     id = models.IntegerField(primary_key=True, auto_created=True)
     routine = models.CharField(max_length=12)
-    users = models.ManyToManyField(to='UserInfo')
+    users = models.ManyToManyField(to='UserInfo', null=True)
 
 
 class SpecialEvent(models.Model):

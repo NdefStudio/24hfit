@@ -52,6 +52,9 @@
                        :link="{path:`/main/${id}/routine`}">
             <span slot="label">事务</span>
           </tabbar-item>
+          <tabbar-item :link="{path:`/main/${id}/sport`}">
+            <span slot="label">运动</span>
+          </tabbar-item>
           <tabbar-item :link="{path:`/main/${id}/posts`}">
             <span slot="label">帖子</span>
           </tabbar-item>

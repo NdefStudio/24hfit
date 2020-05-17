@@ -1,34 +1,27 @@
 <template>
   <div class="page">
-    <router-link to="cover"
+    <router-link to="login"
                  tag="div"
                  class="center_block">
-      <img class="coverimg"
-           :src="img">
+      <img class='coverimg'
+           src="/static/img/导入页4.png">
     </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage',
+  name: 'CoverPage',
   data() {
     return {
-      Title: '24hFit',
-      img: ''
+      Title: '24hFit'
     }
   },
   mounted() {
     var that = this
-    var hh = new Date().getHours()
-    if (hh < 9 && hh > 4) {
-      that.img = '/static/img/导入页1.png'
-    } else if (hh >= 9 && hh < 19) {
-      that.img = '/static/img/导入页2.png'
-    } else that.img = '/static/img/导入页3.png'
     setTimeout(function() {
       console.log('go')
-      that.$router.push({ path: '/cover' })
+      that.$router.push({ path: '/login' })
     }, 2000)
   }
 }
@@ -41,6 +34,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .center_block {
   display: flex;
   justify-content: center;

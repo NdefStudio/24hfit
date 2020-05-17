@@ -1,7 +1,6 @@
 [
     {
         "model": "backend.UserInfo",
-        "pk": 1,
         "fields": {
             "username": "约翰史密斯",
             "password": "123456",
@@ -9,16 +8,56 @@
             "gender": "female",
             "height": 166,
             "weight": 52,
-            "inittime": "",
             "age": 24
         }
     },
     {
         "model": "backend.Routine",
-        "pk": 1,
+        "fields": {
+            "routine": "空闲",
+            "users": "backend.UserInfo"
+        }
+    },
+    {
+        "model": "backend.Routine",
         "fields": {
             "routine": "睡觉",
-            "users": "backend.UserInfo."
+            "users": "backend.UserInfo"
+        }
+    },
+    {
+        "model": "backend.Routine",
+        "fields": {
+            "routine": "跑步",
+            "users": "backend.UserInfo"
+        }
+    },
+    {
+        "model": "backend.Routine",
+        "fields": {
+            "routine": "玩手机",
+            "users": "backend.UserInfo"
+        }
+    },
+    {
+        "model": "backend.Routine",
+        "fields": {
+            "routine": "学习",
+            "users": "backend.UserInfo"
+        }
+    },
+    {
+        "model": "backend.Routine",
+        "fields": {
+            "routine": "其他娱乐",
+            "users": "backend.UserInfo"
+        }
+    },
+    {
+        "model": "backend.PostInfo",
+        "fields": {
+            "PostInfo": "天天运动",
+            "user": "backend.UserInfo"
         }
     }
 ]

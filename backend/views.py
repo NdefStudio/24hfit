@@ -18,6 +18,16 @@ def getRoutineList(request):
             routinelist.append({"name": r["routine"]})
         print(routinelist)
         selected = '睡眠'
+        routinelist = [
+            {'name': '睡眠', 'icon': 'bla1'},
+            {'name': '学习', 'icon': 'bla1'},
+            {'name': '工作', 'icon': 'bla1'},
+            {'name': '跑步', 'icon': 'bla1'},
+            {'name': '跳绳', 'icon': 'bla1'},
+            {'name': '跑步', 'icon': 'bla1'},
+            {'name': '自由活动', 'icon': 'bla1'},
+            {'name': '其他娱乐', 'icon': 'bla1'},
+        ]
         response['routinelist'] = routinelist
         response['selected'] = selected
         response = JsonResponse(response)
@@ -66,6 +76,13 @@ def getAllPosts(request):
                 'content': p.content,
                 'time': p.time
             })
+        allposts = [{
+            'title': '第一天',
+            'content': '早上跑步一圈',
+            'time': '2020-01-12 09:34:06'
+        }, {'title': '第一天',
+            'content': '熬夜',
+            'time': '2020-01-12 23:31:45'}]
         response['allposts'] = allposts
         response = JsonResponse(response)
         response["Access-Control-Allow-Origin"] = "*"

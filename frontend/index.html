@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html style='height:100%'>
   <head>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+  <!-- Load Posenet -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+  <script type="text/javascript">
+    posenet.load().then(function(net) {
+    // posenet 模块加载成功
+  })
+  </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>24hfit</title>

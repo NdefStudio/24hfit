@@ -10,7 +10,6 @@
           <p class="subtext">{{quote}}</p>
         </div>
       </div>
-      <cell title="使用时间：">{{usetime+'小时'}}</cell>
       <cell title="性别：">{{gender=='m'?'男':'女'}}</cell>
       <cell title="身高：">{{height+'厘米'}}</cell>
       <cell title="体重：">{{weight+'千克'}}</cell>

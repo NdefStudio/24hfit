@@ -11,6 +11,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.1",
+    "@tensorflow/tfjs-converter": "^1.7.4",
+    "@tensorflow/tfjs-core": "^1.7.4",
     "fastclick": "^1.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",

@@ -1,21 +1,24 @@
 <template>
-  <div>
-    <group>
-      <x-input title="用户名"
-               v-model="username"></x-input>
-      <x-input title="密码"
-               v-model="password"></x-input>
-      <flexbox>
-        <flexbox-item></flexbox-item>
-        <flexbox-item>
-          <x-button type="primary"
-                    :show-loading="loading"
-                    @click.native="onLogin">登录</x-button>
-        </flexbox-item>
-        <flexbox-item></flexbox-item>
-      </flexbox>
-      <cell :value="authword"></cell>
-    </group>
+  <div style="height:100vh;width:100vw"
+       class="center_block">
+    <div>
+      <group>
+        <x-input title="用户名"
+                 v-model="username"></x-input>
+        <x-input title="密码"
+                 v-model="password"></x-input>
+        <flexbox>
+          <flexbox-item></flexbox-item>
+          <flexbox-item>
+            <x-button type="primary"
+                      :show-loading="loading"
+                      @click.native="onLogin">登录</x-button>
+          </flexbox-item>
+          <flexbox-item></flexbox-item>
+        </flexbox>
+        <cell :value="authword"></cell>
+      </group>
+    </div>
   </div>
 </template>
 
@@ -61,4 +64,9 @@ export default {
 </script>
 
 <style>
+.center_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
