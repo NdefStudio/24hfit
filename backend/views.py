@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
 from backend.models import *
+import datetime
 
 
 # Create your views here.
@@ -24,7 +25,6 @@ def getRoutineList(request):
             {'name': '工作', 'icon': 'bla1'},
             {'name': '跑步', 'icon': 'bla1'},
             {'name': '跳绳', 'icon': 'bla1'},
-            {'name': '跑步', 'icon': 'bla1'},
             {'name': '自由活动', 'icon': 'bla1'},
             {'name': '其他娱乐', 'icon': 'bla1'},
         ]
@@ -48,13 +48,17 @@ def postRoutineList(request):
         # 存入数据库
         crt = Routine.objects.filter(routine=select).first()
         usr = UserInfo.objects.filter(pk=id).first()
-        sttime = usr.crtroutine_starttime
-        rt = usr.crtroutine
+        sttime = usr.croutine_starttime
+        if not sttime:
+            sttime = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        rt = usr.croutine
+        if not rt:
+            rt = Routine.objects.filter(routine='自由活动').first()
         RoutineRecord.objects.create(
-            routine=rt, endtime=time, manualend=True, starttime=sttime)
+            routine=rt, endtime=time, manualend=True, starttime=sttime, user=usr)
         # 更新userinfo
         UserInfo.objects.filter(pk=id).update(
-            crtroutine=crt, crtroutine_starttime=time)
+            croutine=crt, croutine_starttime=time)
         response = HttpResponse('completed')
         response["Access-Control-Allow-Origin"] = "*"
         return response
